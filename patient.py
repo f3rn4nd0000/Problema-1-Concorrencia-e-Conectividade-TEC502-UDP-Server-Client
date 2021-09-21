@@ -13,16 +13,16 @@ class Patient:
     self.oxigenacao = round(random.uniform(90,100),2)
     self.name = ""
     self.gravidade = False
-    # self.name.append(self.first_name)
-    # self.name.append(self.last_name)
     self.name = ''.join((self.first_name," ",self.last_name))
 
+  # Copia os metadados da nossa instância em uma string formatada como JSON
   def toJSON(self):
       return json.dumps(self, default=lambda o: o.__dict__, 
           sort_keys=True)
 
-  #cria um json para ser enviado
+  #cria um JSON para ser enviado pelo new_device.py que fará papel de dispositivo UDP.
   def get_json(self):
+    # Observe abaixo a lógica para determinar se os dados do paciente serão enviados como grave ou não.
     if(self.gravidade):
       json_content = {
         'nome': self.name,
@@ -37,6 +37,7 @@ class Patient:
       }
     return json.dumps(json_content)
 
+  # Retorna o nome do paciente
   def get_name(self):
     json_content = {
       'nome': self.name,
@@ -46,15 +47,12 @@ class Patient:
   #atualiza o JSON com valores de oxigenação diferentes
   def update_json(self):
     self.oxigenacao = round(random.uniform(90,100),2)
+    # Abaixo a lógica para determinar se o paciente será apresentado como grave ou não
     if(self.oxigenacao <= 92):
       self.gravidade = True
     if(self.oxigenacao > 92):
       self.gravidade = False
-    # json_content = {
-    #   'oxigenacao': self.oxigenacao
-    # }
-    # print(self.oxigenacao)
-    # return json.dumps(json_content)
 
+  # Retorna o valor da oxigenação do paciente
   def get_oxigenacao(self):
     return json.dumps(self.oxigenacao)
