@@ -49,7 +49,7 @@ class MyThreadedServer():
     print('data_dict nome', data_dict['nome'])
     #Esta é a URL que estará hospedado a API REST
     url = url+'/pacientes'
-    print("me derrubaram aqui oooh ", self.getClientList().count(client_address))
+    print("Conectando-se a url:", url)
     print("enviando dados para o servidor Flask")
     
     #método que faz POST request para API REST
