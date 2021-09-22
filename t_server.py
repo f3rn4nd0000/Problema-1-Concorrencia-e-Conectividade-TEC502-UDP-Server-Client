@@ -87,3 +87,4 @@ if __name__ == '__main__':
   logging.getLogger().setLevel(logging.DEBUG)
   t = MyThreadedServer()
   t.listen_clients(url)
+  print("conexao foi realizada com a url:",url)
